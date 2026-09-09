@@ -2,6 +2,8 @@ services:
   mysql:
     image: mysql:8.4
     restart: unless-stopped
+    # Reset the two exercise tables whenever the MySQL server starts.
+    command: ["mysqld", "--init-file=/opt/mysql/init.sql"]
     environment:
       MYSQL_DATABASE: mydatabase
       MYSQL_USER: myuser
@@ -11,6 +13,7 @@ services:
       - "127.0.0.1:3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/opt/mysql/init.sql:ro
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
       interval: 10s
