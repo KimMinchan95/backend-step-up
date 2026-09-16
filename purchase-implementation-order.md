@@ -78,13 +78,13 @@ namespace와 모델을 가리키는 타입 경로도 함께 맞춘다.
 - `src/main/java/dev/training/back/purchase/mapper/PurchaseMapper.java`
 - `src/main/resources/mapper/PurchaseMapper.xml`
 
-- [ ] Mapper 인터페이스에 `@Mapper`를 붙이고 `int insert(Purchase purchase)`를 선언한다.
-- [ ] XML의 namespace를 `dev.training.back.purchase.mapper.PurchaseMapper`로 맞춘다.
-- [ ] `purchases`에 `product_id`, `quantity`, `unit_price`를 INSERT한다.
-- [ ] 값을 바인딩할 때 Java 필드명인 `productId`, `quantity`, `unitPrice`를 사용한다.
-- [ ] `useGeneratedKeys`와 `keyProperty="id"`로 생성된 구매 ID를 객체에 받는다.
-- [ ] `Purchase findById(@Param("id") Long id)`를 선언하고 구매 ID로 한 건을 조회하는 SELECT를 작성한다.
-- [ ] SELECT의 `resultType`을 `dev.training.back.purchase.model.Purchase`로 지정한다.
+- [x] Mapper 인터페이스에 `@Mapper`를 붙이고 `int insert(Purchase purchase)`를 선언한다.
+- [x] XML의 namespace를 `dev.training.back.purchase.mapper.PurchaseMapper`로 맞춘다.
+- [x] `purchases`에 `product_id`, `quantity`, `unit_price`를 INSERT한다.
+- [x] 값을 바인딩할 때 Java 필드명인 `productId`, `quantity`, `unitPrice`를 사용한다.
+- [x] `useGeneratedKeys`와 `keyProperty="id"`로 생성된 구매 ID를 객체에 받는다.
+- [x] `Purchase findById(@Param("id") Long id)`를 선언하고 구매 ID로 한 건을 조회하는 SELECT를 작성한다.
+- [x] SELECT의 `resultType`을 `dev.training.back.purchase.model.Purchase`로 지정한다.
 - [ ] SELECT에서 `product_id AS productId`, `unit_price AS unitPrice`, `purchased_at AS purchasedAt`처럼 Java 필드명에 맞춰 매핑한다.
 - [ ] DB 콘솔에서 INSERT SQL에 기존 상품 ID, 수량, 가격을 넣어 한 건을 저장해본다.
 - [ ] 생성된 구매 ID로 SELECT해서 저장된 값과 DB에서 생성한 구매 시각을 확인한다.
