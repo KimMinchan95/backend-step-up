@@ -67,7 +67,7 @@ namespace와 모델을 가리키는 타입 경로도 함께 맞춘다.
 - [x] `id`, `productId`, `quantity`, `unitPrice`, `purchasedAt` 필드를 만든다.
 - [x] DB의 `BIGINT`는 `Long`, `INT`는 `Integer`, 구매 시각은 `LocalDateTime`으로 잡는다.
 - [x] `unitPrice`는 구매 당시 개당 가격이다.
-- [x1] 구매 ID와 구매 시각은 DB에서 생성하게 한다.
+- [x] 구매 ID와 구매 시각은 DB에서 생성하게 한다.
 
 완료 기준: 어떤 상품을 몇 개, 얼마에 구매했는지 담을 수 있다.
 
