@@ -85,7 +85,7 @@ namespace와 모델을 가리키는 타입 경로도 함께 맞춘다.
 - [x] `useGeneratedKeys`와 `keyProperty="id"`로 생성된 구매 ID를 객체에 받는다.
 - [x] `Purchase findById(@Param("id") Long id)`를 선언하고 구매 ID로 한 건을 조회하는 SELECT를 작성한다.
 - [x] SELECT의 `resultType`을 `dev.training.back.purchase.model.Purchase`로 지정한다.
-- [ ] SELECT에서 `product_id AS productId`, `unit_price AS unitPrice`, `purchased_at AS purchasedAt`처럼 Java 필드명에 맞춰 매핑한다.
+- [x] SELECT에서 `product_id AS productId`, `unit_price AS unitPrice`, `purchased_at AS purchasedAt`처럼 Java 필드명에 맞춰 매핑한다.
 - [ ] DB 콘솔에서 INSERT SQL에 기존 상품 ID, 수량, 가격을 넣어 한 건을 저장해본다.
 - [ ] 생성된 구매 ID로 SELECT해서 저장된 값과 DB에서 생성한 구매 시각을 확인한다.
 

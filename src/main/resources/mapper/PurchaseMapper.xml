@@ -10,7 +10,7 @@
     </insert>
 
     <select id="findById" resultType="dev.training.back.purchase.model.Purchase">
-        Select product_id AS productId, unit_price AS unitPrice, purchased_at AS purchasedAt
+        Select id, product_id AS productId, quantity, unit_price AS unitPrice, purchased_at AS purchasedAt
         From purchases
         Where id = #{id}
     </select>
