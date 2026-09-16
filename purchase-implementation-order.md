@@ -86,8 +86,8 @@ namespace와 모델을 가리키는 타입 경로도 함께 맞춘다.
 - [x] `Purchase findById(@Param("id") Long id)`를 선언하고 구매 ID로 한 건을 조회하는 SELECT를 작성한다.
 - [x] SELECT의 `resultType`을 `dev.training.back.purchase.model.Purchase`로 지정한다.
 - [x] SELECT에서 `product_id AS productId`, `unit_price AS unitPrice`, `purchased_at AS purchasedAt`처럼 Java 필드명에 맞춰 매핑한다.
-- [ ] DB 콘솔에서 INSERT SQL에 기존 상품 ID, 수량, 가격을 넣어 한 건을 저장해본다.
-- [ ] 생성된 구매 ID로 SELECT해서 저장된 값과 DB에서 생성한 구매 시각을 확인한다.
+- [x] DB 콘솔에서 INSERT SQL에 기존 상품 ID, 수량, 가격을 넣어 한 건을 저장해본다.
+- [x] 생성된 구매 ID로 SELECT해서 저장된 값과 DB에서 생성한 구매 시각을 확인한다.
 
 완료 기준: DB 콘솔에서 구매내역 1건을 저장하고, 생성된 구매 ID로 구매 시각까지 조회할 수 있다.
 이 단계에서는 SQL의 동작을 확인한다. Mapper의 파라미터 바인딩, Java 객체에 구매 ID가
