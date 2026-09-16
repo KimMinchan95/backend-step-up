@@ -12,6 +12,6 @@ public class Purchase {
     private Long id;
     private Long productId;
     private Integer quantity;
-    private Integer UnitPrice;
+    private Integer unitPrice;
     private LocalDateTime purchasedAt;
 }

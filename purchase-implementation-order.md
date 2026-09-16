@@ -64,10 +64,10 @@ namespace와 모델을 가리키는 타입 경로도 함께 맞춘다.
 
 대상: `src/main/java/dev/training/back/purchase/model/Purchase.java`
 
-- [ ] `id`, `productId`, `quantity`, `unitPrice`, `purchasedAt` 필드를 만든다.
-- [ ] DB의 `BIGINT`는 `Long`, `INT`는 `Integer`, 구매 시각은 `LocalDateTime`으로 잡는다.
-- [ ] `unitPrice`는 구매 당시 개당 가격이다.
-- [ ] 구매 ID와 구매 시각은 DB에서 생성하게 한다.
+- [x] `id`, `productId`, `quantity`, `unitPrice`, `purchasedAt` 필드를 만든다.
+- [x] DB의 `BIGINT`는 `Long`, `INT`는 `Integer`, 구매 시각은 `LocalDateTime`으로 잡는다.
+- [x] `unitPrice`는 구매 당시 개당 가격이다.
+- [x1] 구매 ID와 구매 시각은 DB에서 생성하게 한다.
 
 완료 기준: 어떤 상품을 몇 개, 얼마에 구매했는지 담을 수 있다.
 
@@ -185,7 +185,7 @@ docker compose up -d --wait
 - [ ] `POST /purchases`에 다음 요청을 보낸다.
 
 ```json
-{"productId": 1, "quantity": 2}
+{ "productId": 1, "quantity": 2 }
 ```
 
 - [ ] 201 성공 응답에 구매 ID, 상품 ID 1, 수량 2, 개당 가격 1500원, 구매 시각이 있는지 확인한다.
