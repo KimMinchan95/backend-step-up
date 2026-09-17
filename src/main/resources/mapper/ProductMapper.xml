@@ -16,5 +16,10 @@
         WHERE id = #{id}
     </select>
 
-SELECT id, name, stock FROM products WHERE id = 1;
+    <update id="decreaseQuantity">
+        UPDATE products
+        SET stock = stock - #{quantity}
+        WHERE id = #{id}
+            AND stock >= #{quantity}
+    </update>
 </mapper>

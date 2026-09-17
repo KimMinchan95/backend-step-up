@@ -115,16 +115,16 @@ namespace와 모델을 가리키는 타입 경로도 함께 맞춘다.
 
 대상: `src/main/java/dev/training/back/purchase/service/PurchaseService.java`
 
-- [ ] `@Service`를 붙이고 생성자로 `ProductService`, `ProductMapper`, `PurchaseMapper`를 주입한다.
-- [ ] 상품 ID와 수량을 받아 `Purchase`를 반환하는 public 구매 메서드를 만든다.
-- [ ] 구매 메서드에 쓰기 가능한 `@Transactional`을 붙인다.
-- [ ] 상품 ID가 null 또는 0 이하이거나 수량이 null 또는 0 이하이면 `IllegalArgumentException`을 발생시킨다.
-- [ ] 기존 `ProductService.getProduct(productId)`로 상품을 조회한다. 상품이 없으면 기존의 `IllegalArgumentException`을 그대로 전달한다.
-- [ ] 재고 차감 Mapper를 호출한다. 변경 행 수가 0이면 `IllegalStateException`을 발생시킨다.
-- [ ] 조회한 상품 가격과 구매 수량으로 `Purchase`를 만든다.
-- [ ] 구매내역을 저장하고 객체에 채워진 구매 ID로 `PurchaseMapper.findById()`를 호출한다.
-- [ ] DB에서 조회한 `Purchase`를 반환한다. 저장 직후 조회 결과가 없으면 `IllegalStateException`을 발생시킨다.
-- [ ] DB 저장 예외는 별도 예외로 감싸지 않고 그대로 전달한다. 실패를 잡아서 정상 반환하지 않는다.
+- [x] `@Service`를 붙이고 생성자로 `ProductService`, `ProductMapper`, `PurchaseMapper`를 주입한다.
+- [x] 상품 ID와 수량을 받아 `Purchase`를 반환하는 public 구매 메서드를 만든다.
+- [x] 구매 메서드에 쓰기 가능한 `@Transactional`을 붙인다.
+- [x] 상품 ID가 null 또는 0 이하이거나 수량이 null 또는 0 이하이면 `IllegalArgumentException`을 발생시킨다.
+- [x] 기존 `ProductService.getProduct(productId)`로 상품을 조회한다. 상품이 없으면 기존의 `IllegalArgumentException`을 그대로 전달한다.
+- [x] 재고 차감 Mapper를 호출한다. 변경 행 수가 0이면 `IllegalStateException`을 발생시킨다.
+- [x] 조회한 상품 가격과 구매 수량으로 `Purchase`를 만든다.
+- [x] 구매내역을 저장하고 객체에 채워진 구매 ID로 `PurchaseMapper.findById()`를 호출한다.
+- [x] DB에서 조회한 `Purchase`를 반환한다. 저장 직후 조회 결과가 없으면 `IllegalStateException`을 발생시킨다.
+- [x] DB 저장 예외는 별도 예외로 감싸지 않고 그대로 전달한다. 실패를 잡아서 정상 반환하지 않는다.
 
 완료 기준: 구매 메서드의 상품 조회, 재고 차감, 구매내역 저장·조회가 연결되고 빌드가 된다.
 실제 구매 성공과 롤백은 다음 단계에서 Controller를 연결한 뒤 확인한다.
