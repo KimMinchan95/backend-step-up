@@ -13,7 +13,6 @@ import dev.training.back.purchase.dto.PurchaseResponse;
 import dev.training.back.purchase.model.Purchase;
 import org.springframework.http.HttpStatus;
 
-
 @RestController
 @RequestMapping("/purchases")
 @RequiredArgsConstructor
