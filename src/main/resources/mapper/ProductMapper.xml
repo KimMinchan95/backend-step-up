@@ -16,4 +16,5 @@
         WHERE id = #{id}
     </select>
 
+SELECT id, name, stock FROM products WHERE id = 1;
 </mapper>
