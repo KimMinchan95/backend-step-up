@@ -148,13 +148,13 @@ namespace와 모델을 가리키는 타입 경로도 함께 맞춘다.
 - `src/main/java/dev/training/back/purchase/dto/PurchaseRequest.java`
 - `src/main/java/dev/training/back/purchase/dto/PurchaseResponse.java`
 
-- [ ] `PurchaseRequest`에 상품 ID와 수량을 받는다.
-- [ ] 필수값과 양수 검증을 붙이고 Controller에서 `@Valid`로 요청을 검증한다.
-- [ ] `POST /purchases`에서 요청을 받아 `PurchaseService`에 전달한다.
-- [ ] Service가 반환한 `Purchase`를 `PurchaseResponse`로 변환한다.
-- [ ] `PurchaseResponse`에 `id`, `productId`, `quantity`, `unitPrice`, `purchasedAt`을 담아 201 응답을 반환한다.
-- [ ] Controller는 요청·응답을 담당하고, 재고 변경과 구매내역 저장은 Service에 맡긴다.
-- [ ] Service에서 전달된 예외는 Controller에서 잡지 않고 Spring Boot의 기본 오류 응답을 사용한다.
+- [x] `PurchaseRequest`에 상품 ID와 수량을 받는다.
+- [x] 필수값과 양수 검증을 붙이고 Controller에서 `@Valid`로 요청을 검증한다.
+- [x] `POST /purchases`에서 요청을 받아 `PurchaseService`에 전달한다.
+- [x] Service가 반환한 `Purchase`를 `PurchaseResponse`로 변환한다.
+- [x] `PurchaseResponse`에 `id`, `productId`, `quantity`, `unitPrice`, `purchasedAt`을 담아 201 응답을 반환한다.
+- [x] Controller는 요청·응답을 담당하고, 재고 변경과 구매내역 저장은 Service에 맡긴다.
+- [x] Service에서 전달된 예외는 Controller에서 잡지 않고 Spring Boot의 기본 오류 응답을 사용한다.
 
 완료 기준: HTTP 요청이 구매 Service까지 전달되고, 저장된 구매내역이 담긴 응답을 받을 수 있다.
 
