@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import dev.training.back.purchase.dto.PurchaseRequest;
 import dev.training.back.purchase.dto.PurchaseResponse;
-import dev.training.back.purchase.model.Purchase;
 import org.springframework.http.HttpStatus;
 
 @RestController
@@ -22,7 +21,6 @@ public class PurchaseController {
 
     @PostMapping
     public ResponseEntity<PurchaseResponse> purchase(@Valid @RequestBody PurchaseRequest request) {
-        Purchase saved = purchaseService.purchase(request.getProductId(), request.getQuantity());
-        return ResponseEntity.status(HttpStatus.CREATED).body(PurchaseResponse.from(saved));
+        return ResponseEntity.status(HttpStatus.CREATED).body(purchaseService.createPurchase(request.getProductId(),request.getQuantity()));
     }
 }
