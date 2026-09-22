@@ -20,4 +20,6 @@ public class Purchase {
     private Integer quantity;
     private Integer unitPrice;
     private LocalDateTime purchasedAt;
+    private String status;
+    private LocalDateTime canceledAt;
 }

@@ -10,6 +10,7 @@ import dev.training.back.product.service.ProductService;
 import dev.training.back.purchase.model.Purchase;
 import org.springframework.transaction.annotation.Transactional;
 import dev.training.back.product.model.Product;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -41,6 +42,9 @@ public class PurchaseService {
             .productId(productId)
             .quantity(quantity)
             .unitPrice(product.getPrice())
+            .status("COMPLETED")
+            .purchasedAt(LocalDateTime.now())
+            .canceledAt(null)
             .build();
 
         int inserted = purchaseMapper.insert(purchase);

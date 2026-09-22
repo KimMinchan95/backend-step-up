@@ -14,8 +14,10 @@ public class PurchaseResponse {
     private final Integer unitPrice;
     private final Integer quantity;
     private final LocalDateTime purchasedAt;
+    private final String status;
+    private final LocalDateTime canceledAt;
 
     public static PurchaseResponse from(Purchase purchase) {
-        return new PurchaseResponse(purchase.getId(), purchase.getProductId(), purchase.getUnitPrice(), purchase.getQuantity(), purchase.getPurchasedAt());
+        return new PurchaseResponse(purchase.getId(), purchase.getProductId(), purchase.getUnitPrice(), purchase.getQuantity(), purchase.getPurchasedAt(), purchase.getStatus(), purchase.getCanceledAt());
     }
  }

@@ -4,13 +4,13 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.training.back.purchase.mapper.PurchaseMapper">
 
-    <insert id="insert" resultType="java.lang.Integer" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO purchases (product_id, quantity, unit_price)
         VALUES (#{productId}, #{quantity}, #{unitPrice})
     </insert>
 
     <select id="findById" resultType="dev.training.back.purchase.model.Purchase">
-        SELECT id, product_id AS productId, quantity, unit_price AS unitPrice, purchased_at AS purchasedAt
+        SELECT id, product_id, quantity, unit_price, purchased_at, status, canceled_at
         FROM purchases
         WHERE id = #{id}
     </select>
