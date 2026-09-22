@@ -30,6 +30,11 @@ CREATE TABLE purchases (
     CONSTRAINT chk_purchases_unit_price CHECK (unit_price >= 0)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE purchases
+    ADD COLUMN status VARCHAR(20) NOT NULL DEFAULT 'COMPLETED',
+    ADD COLUMN canceled_at TIMESTAMP NULL,
+    ADD CONSTRAINT chk_purchases_status CHECK (status IN ('COMPLETED', 'CANCELED'));
+
 INSERT INTO products (id, name, price, stock) VALUES
     (1, '콜라', 1500, 10),
     (2, '캔커피', 1000, 5),

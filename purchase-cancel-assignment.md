@@ -64,23 +64,24 @@ COMPLETED → CANCELED
 ```
 
 `CREATE TABLE purchases` 아래에 `ALTER TABLE` 문을 추가하여 구매 상태와 취소 시각을 저장할 수 있게 한다.
+
 > [!IMPORTANT]
 > 작성된 `CREATE TABLE` 문을 수정하기보다 `ALTER TABLE` 문을 사용합니다.<br>
 > 이미 생성된 테이블의 구조는 일반적으로 `ALTER TABLE`로 변경합니다.
 
 추가할 컬럼:
 
-| DB 컬럼 | 타입 | 조건 | 의미 |
-| --- | --- | --- | --- |
-| `status` | `VARCHAR(20)` | `NOT NULL`, 기본값 `COMPLETED` | 현재 구매 상태 |
-| `canceled_at` | `TIMESTAMP` | null 허용 | 구매 취소 시각 |
+| DB 컬럼       | 타입          | 조건                           | 의미           |
+| ------------- | ------------- | ------------------------------ | -------------- |
+| `status`      | `VARCHAR(20)` | `NOT NULL`, 기본값 `COMPLETED` | 현재 구매 상태 |
+| `canceled_at` | `TIMESTAMP`   | null 허용                      | 구매 취소 시각 |
 
 허용할 상태 값은 `COMPLETED`, `CANCELED` 두 개다.
+
 > [!IMPORTANT]
 > 요구에 따라 `TIMESTAMP`를 `BIGINT`로 사용할 수도 있습니다.<br>
 > 통상 `TIMESTAMP`는 `LocalDateTime`, `BIGINT`는 원시 타입 `long` 또는 참조 타입 `Long`을 사용합니다.<br>
 > 시스템 내에서 모든 시간 관리는 통일된 타입을 사용하는 것이 권장됩니다.
-
 
 `ALTER TABLE`, `ADD COLUMN`, `ADD CONSTRAINT`를 사용하여 직접 DDL을 작성한다.
 기존 구매 INSERT SQL에는 `status`를 직접 넣지 않는다. 새 구매는 DB 기본값에 의해 `COMPLETED` 상태로 저장되게 한다.
@@ -106,11 +107,11 @@ SHOW CREATE TABLE purchases;
 
 확인할 것:
 
-- [ ] MySQL 재시작 과정에서 테이블이 삭제되고 다시 생성된다.
-- [ ] `status`의 기본값이 `COMPLETED`다.
-- [ ] `canceled_at`은 null을 허용한다.
-- [ ] 구매 상태를 제한하는 CHECK 제약조건이 생성됐다.
-- [ ] 초기화 후 `purchases` 테이블은 비어 있다.
+- [x] MySQL 재시작 과정에서 테이블이 삭제되고 다시 생성된다.
+- [x] `status`의 기본값이 `COMPLETED`다.
+- [x] `canceled_at`은 null을 허용한다.
+- [x] 구매 상태를 제한하는 CHECK 제약조건이 생성됐다.
+- [x] 초기화 후 `purchases` 테이블은 비어 있다.
 
 완료 기준: MySQL을 재시작할 때마다 변경된 구조의 빈 구매내역 테이블이 만들어진다.
 
@@ -127,9 +128,9 @@ SHOW CREATE TABLE purchases;
 
 추가할 Java 필드:
 
-| Java 필드 | 타입 | DB 컬럼 |
-| --- | --- | --- |
-| `status` | `String` | `status` |
+| Java 필드    | 타입            | DB 컬럼       |
+| ------------ | --------------- | ------------- |
+| `status`     | `String`        | `status`      |
 | `canceledAt` | `LocalDateTime` | `canceled_at` |
 
 이번 과제에서는 상태를 위한 Java enum을 필수로 만들지 않는다.
@@ -139,12 +140,12 @@ SHOW CREATE TABLE purchases;
 
 자동 매핑 예시:
 
-| DB 컬럼 | Java 필드 |
-| --- | --- |
-| `product_id` | `productId` |
-| `unit_price` | `unitPrice` |
+| DB 컬럼        | Java 필드     |
+| -------------- | ------------- |
+| `product_id`   | `productId`   |
+| `unit_price`   | `unitPrice`   |
 | `purchased_at` | `purchasedAt` |
-| `canceled_at` | `canceledAt` |
+| `canceled_at`  | `canceledAt`  |
 
 설정을 활성화한 뒤 기존 구매내역 조회 SQL에 작성했던 `AS` 별칭을 제거한다.
 SQL에는 실제 DB 컬럼명을 사용하고, 조회 결과가 Java 필드에 정상적으로 들어오는지 확인한다.
@@ -153,13 +154,13 @@ SQL에는 실제 DB 컬럼명을 사용하고, 조회 결과가 Java 필드에 �
 
 ```json
 {
-  "id": 1,
-  "productId": 3,
-  "quantity": 1,
-  "unitPrice": 800,
-  "status": "COMPLETED",
-  "purchasedAt": "2026-09-17T10:00:00",
-  "canceledAt": null
+    "id": 1,
+    "productId": 3,
+    "quantity": 1,
+    "unitPrice": 800,
+    "status": "COMPLETED",
+    "purchasedAt": "2026-09-17T10:00:00",
+    "canceledAt": null
 }
 ```
 
@@ -265,13 +266,13 @@ Controller가 할 일:
 
 ```json
 {
-  "id": 1,
-  "productId": 3,
-  "quantity": 1,
-  "unitPrice": 800,
-  "status": "CANCELED",
-  "purchasedAt": "2026-09-17T10:00:00",
-  "canceledAt": "2026-09-17T10:05:00"
+    "id": 1,
+    "productId": 3,
+    "quantity": 1,
+    "unitPrice": 800,
+    "status": "CANCELED",
+    "purchasedAt": "2026-09-17T10:00:00",
+    "canceledAt": "2026-09-17T10:05:00"
 }
 ```
 
