@@ -22,4 +22,10 @@
         WHERE id = #{id}
             AND stock >= #{quantity}
     </update>
+
+    <update id="increaseQuantity">
+        UPDATE products
+        SET stock = stock + #{quantity}
+        WHERE id = #{id}
+    </update>
 </mapper>

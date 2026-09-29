@@ -14,4 +14,6 @@ public interface ProductMapper {
     Product findById(@Param("id") Long id);
 
     int decreaseQuantity(@Param("id") Long id, @Param("quantity") Integer quantity);
+
+    int increaseQuantity(@Param("id") Long id, @Param("quantity") Integer quantity);
 }
