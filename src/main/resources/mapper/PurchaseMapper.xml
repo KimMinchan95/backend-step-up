@@ -14,4 +14,12 @@
         FROM purchases
         WHERE id = #{id}
     </select>
+
+
+    <update id="cancelById">
+        UPDATE purchases
+        SET status = 'CANCELED', canceled_at = NOW()
+        WHERE id = #{id}
+            AND status = 'COMPLETED'
+    </update>
 </mapper>

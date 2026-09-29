@@ -10,4 +10,6 @@ public interface PurchaseMapper {
     int insert(Purchase purchase);
 
     Purchase findById(@Param("id") Long id);
+
+    int cancelById(@Param("id") Long id);
 }
