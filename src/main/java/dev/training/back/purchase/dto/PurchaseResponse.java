@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import dev.training.back.purchase.model.Purchase;
 import java.time.LocalDateTime;
+import dev.training.back.purchase.model.PurchaseStatus;
 
 @Getter
 @RequiredArgsConstructor
@@ -14,7 +15,7 @@ public class PurchaseResponse {
     private final Integer unitPrice;
     private final Integer quantity;
     private final LocalDateTime purchasedAt;
-    private final String status;
+    private final PurchaseStatus status;
     private final LocalDateTime canceledAt;
 
     public static PurchaseResponse from(Purchase purchase) {
