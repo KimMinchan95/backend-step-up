@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import dev.training.back.purchase.dto.PurchaseRequest;
 import dev.training.back.purchase.dto.PurchaseResponse;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/purchases")
@@ -22,5 +23,10 @@ public class PurchaseController {
     @PostMapping
     public ResponseEntity<PurchaseResponse> purchase(@Valid @RequestBody PurchaseRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(purchaseService.createPurchase(request.getProductId(),request.getQuantity()));
+    }
+
+    @PostMapping("/{purchaseId}/cancel")
+    public ResponseEntity<PurchaseResponse> cancel(@PathVariable Long purchaseId) {
+        return ResponseEntity.ok(purchaseService.cancelPurchase(purchaseId));
     }
 }

@@ -61,20 +61,20 @@ public class PurchaseService {
             throw new IllegalArgumentException("구매 ID가 유효하지 않습니다. purchaseId=" + purchaseId);
         }
 
-        return purchaseMapper.findById(purchaseId);
+        Purchase purchase = purchaseMapper.findById(purchaseId);
+        if (purchase == null) {
+            throw new IllegalArgumentException("구매 정보를 찾을 수 없습니다. purchaseId=" + purchaseId);
+        }
+        return purchase;
     }
 
     @Transactional
-    public Purchase cancelPurchase(Long purchaseId) {
+    public PurchaseResponse cancelPurchase(Long purchaseId) {
         if (purchaseId == null || purchaseId <= 0) {
             throw new IllegalArgumentException("구매 ID가 유효하지 않습니다. purchaseId=" + purchaseId);
         }
 
         Purchase purchase = findById(purchaseId);
-
-        if (purchase == null) {
-            throw new IllegalArgumentException("구매 정보를 찾을 수 없습니다. purchaseId=" + purchaseId);
-        }
 
         if (purchase.getStatus() != PurchaseStatus.COMPLETED) {
             throw new IllegalStateException("구매 상태가 완료되지 않았습니다. purchaseId=" + purchaseId);
@@ -92,6 +92,6 @@ public class PurchaseService {
             throw new IllegalStateException("재고 증가를 실패했습니다. productId=" + purchase.getProductId() + ", quantity=" + purchase.getQuantity());
         }
 
-        return findById(purchaseId);
+        return PurchaseResponse.from(findById(purchaseId));
     }
 }
